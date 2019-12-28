@@ -1,14 +1,4 @@
-# open terminal
-# ctrl + alt - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 --single-instance -d ~
-
-# quick restart
-# alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-
-# screenshot
-# alt + cmd - s : screenshot
-
-
-# WINDOWS
+# =============== WINDOWS
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -28,7 +18,7 @@ shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
-# SPACES
+# =============== SPACES
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 shift + cmd - n : yabai -m space --create && \
@@ -41,8 +31,10 @@ cmd + alt - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                 yabai -m space --focus "${index}"
 
+# destroy desktop
+cmd + alt - w : yabai -m space --destroy
 
-# focus desktop ok
+# focus space
 ctrl + alt - x : yabai -m space --focus recent
 ctrl + alt - h : yabai -m space --focus prev
 ctrl + alt - l : yabai -m space --focus next
@@ -57,7 +49,7 @@ ctrl + alt - 8 : yabai -m space --focus 8
 ctrl + alt - 9 : yabai -m space --focus 9
 ctrl + alt - 0 : yabai -m space --focus 10
 
-# send window to desktop and follow focus
+# send window to space and follow focus
 ctrl + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
 ctrl + cmd - h : yabai -m window --space prev; yabai -m space --focus prev
 ctrl + cmd - l : yabai -m window --space next; yabai -m space --focus next
@@ -72,7 +64,9 @@ ctrl + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
 ctrl + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
 ctrl + cmd - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
-# focus monitor ok
+# =============== DISPLAYS
+#
+# focus monitor
 shift + alt - x  : yabai -m display --focus recent
 shift + alt - z  : yabai -m display --focus prev
 shift + alt - c  : yabai -m display --focus next
@@ -80,7 +74,7 @@ shift + alt - 1  : yabai -m display --focus 1
 shift + alt - 2  : yabai -m display --focus 2
 shift + alt - 3  : yabai -m display --focus 3
 
-# focus monitor ok
+# send to monitor and follow
 shift + cmd - x  : yabai -m window --display recent; yabai -m display --focus recent
 shift + cmd - z  : yabai -m window --display prev; yabai -m display --focus prev
 shift + cmd - c  : yabai -m window --display next; yabai -m display --focus next
@@ -88,8 +82,6 @@ shift + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 shift + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 shift + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
 
-# destroy desktop
-cmd + alt - w : yabai -m space --destroy
 
 # =============== WINDOW MANIPULATION
 
